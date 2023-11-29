@@ -12,7 +12,6 @@ pipeline{
         }
         stage( 'Build the dotnet'){
             steps{
-                sh 'cd nopCommerce '
                 sh 'dotnet build -c Release src/NopCommerce.sln'
                 sh 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj  -o "./published"'
             }
