@@ -7,7 +7,7 @@ pipeline{
         stage( 'VCS'){
             steps{
                 git url: 'https://github.com/Gopi0527/nopCommerce.git',
-                barnch: 'master'
+                branch: 'master'
             }
         }
         stage( 'Build the dotnet'){
