@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent { label 'JDK-17' }
     triggers{
         cron ( '*/30 * * * *')
     }
