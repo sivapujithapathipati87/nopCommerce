@@ -12,9 +12,10 @@ pipeline{
         }
         stage( 'Build the dotnet'){
             steps{
-                sh 'dotnet build -c Release src/NopCommerce.sln'
-                sh 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj  -o "./published"'
-            }
+                sh 'dotnet tool install --global dotnet-sonarscanner'
+                sh 'dotnet sonarscanner begin k:spring-petclinic-gopi_cli o:spring-petclinic-gopi d:sonar.token=10c896f62c703709e8515db4412328abb1049ccd
+                    dotnet build -c Release src/NopCommerce.sln
+                    dotnet sonarscanner end d:sonar.token=10c896f62c703709e8515db4412328abb1049ccd'
             post{
                 success{
                     sh 'mkdir ./published/bin ./published/logs'
