@@ -1,12 +1,14 @@
 pipeline{
-    agent any
+    agent {
+    label 'DOTNET'
+    }
     triggers{
         pollSCM ( '* * * * *')
     }
     stages{
         stage( 'VCS'){
             steps{
-                git url: 'https://github.com/Gopi0527/nopCommerce.git',
+                git url: 'https://github.com/sivapujithapathipati87/nopCommerce.git',
                 branch: 'master'
             }
         }
@@ -23,8 +25,8 @@ pipeline{
                 } 
                 failure{
                     mail subject: 'build stage failure',
-                         to: 'krishna@qt.com',
-                         from: 'krishna@qt.com',
+                         to: 'sivapujithapathipati@gmail.com',
+                         from: 'sivapujithapathipati@gmail.com',
                          body:  "Refer to $BUILD_URL for more details"
                 }
                 
